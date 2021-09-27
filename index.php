@@ -36,7 +36,7 @@ $app->config("debug", true);
 //
 require_once("functions.php");
 
-//
+//ROTAS
 /*
 require_once("site.php");
 require_once("admin.php");
