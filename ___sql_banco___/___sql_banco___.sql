@@ -1,20 +1,32 @@
 
 
-
 /* DATABASE projeto_teste_002 */
 --DROP DATABASE projeto_teste_002;
 
 
 CREATE DATABASE projeto_teste_002;
+--utf8 - utf8mb4
+--CREATE DATABASE projeto_teste_002 CHARACTER SET utf8 COLLATE utf8_general_ci;
+--CREATE DATABASE projeto_teste_002 CHARACTER SET utf8mb4 COLLATE utf8_general_ci;
 
 
 /* TABELA CATEGORIAS - tb_categorias */
 --DROP TABLE IF EXISTS `tb_categorias`;
+
 CREATE TABLE tb_categorias( 
 	id_categoria INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 	categoria VARCHAR(50) NOT NULL, 
 	descricao VARCHAR(250) NOT NULL 
 );
+
+--utf8 - utf8mb4
+/*
+CREATE TABLE tb_categorias( 
+	id_categoria INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+	categoria VARCHAR(50) NOT NULL, 
+	descricao VARCHAR(250) NOT NULL 
+) ENGINE=InnoDB CHARACTER SET=utf8mb4;
+*/
 
 
 INSERT INTO tb_categorias (categoria, descricao) VALUES ("Padaria", "Setor de Pães e Bolos");

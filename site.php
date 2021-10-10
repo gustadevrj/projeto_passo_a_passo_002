@@ -1,5 +1,29 @@
 <?php
 
+
+/*
+*********************************************
+*********************************************
+>>>FORMATACAO DE ROTAS (PADRAO CakePHP)
+
+Formatar URLs na Seguinte Forma:
+
+/controlador/ação/param1/param2
+
+Onde Ação é a Função a Ser Chamada Dentro do Controlador.
+
+Exemplo Pratico:
+
+www.ourstore.com/books/list/fantasy
+
+No Formato de URL Clássico Antigo, Seria:
+
+www.ourstore.com/books_controller.php?action=list&category=fantasy
+*********************************************
+*********************************************
+*/
+
+
 use \Vendor\Page;
 
 use \Vendor\Model\Categoria;
@@ -148,6 +172,29 @@ $app->get("/rota_resposta_formulario_get", function(){
 //CLASSE CATEGORIA
 //##############################
 //##############################
+
+
+/*
+*********************************************
+*********************************************
+>>>FORMATACAO DE ROTAS (PADRAO CakePHP)
+
+Formatar URLs na Seguinte Forma:
+
+/controlador/ação/param1/param2
+
+Onde Ação é a Função a Ser Chamada Dentro do Controlador.
+
+Exemplo Pratico:
+
+www.ourstore.com/books/list/fantasy
+
+No Formato de URL Clássico Antigo, Seria:
+
+www.ourstore.com/books_controller.php?action=list&category=fantasy
+*********************************************
+*********************************************
+*/
 
 
 //ROTA CLASSE CATEGORIA CRUD - LISTAGEM - GET
@@ -358,6 +405,29 @@ $app->get("/rota_classe_categoria_detalhe/:id_categoria", function($id_categoria
 //CLASSE PRODUTO
 //##############################
 //##############################
+
+
+/*
+*********************************************
+*********************************************
+>>>FORMATACAO DE ROTAS (PADRAO CakePHP)
+
+Formatar URLs na Seguinte Forma:
+
+/controlador/ação/param1/param2
+
+Onde Ação é a Função a Ser Chamada Dentro do Controlador.
+
+Exemplo Pratico:
+
+www.ourstore.com/books/list/fantasy
+
+No Formato de URL Clássico Antigo, Seria:
+
+www.ourstore.com/books_controller.php?action=list&category=fantasy
+*********************************************
+*********************************************
+*/
 
 
 //ROTA CLASSE PRODUTO CRUD - LISTAGEM - GET

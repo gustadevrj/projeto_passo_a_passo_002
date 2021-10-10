@@ -1,5 +1,18 @@
 <?php
 
+//******************************
+//utf8 - utf8mb4
+//echo("<br>mb_internal_encoding: " . mb_internal_encoding() . "<br>");
+
+//header('Content-Type: text/html; charset=UTF-8');
+
+// Diz para o PHP que estamos usando strings UTF-8 até o final do script
+//mb_internal_encoding('UTF-8');
+
+// Diz para o PHP que nós vamos enviar uma saída UTF-8 para o navegador
+//mb_http_output('UTF-8');
+//******************************
+
 session_start();
 
 echo("<br><b><a href='http://www.projeto_teste_002.com.br'>www.projeto_teste_002.com.br</a></b><br>");
@@ -35,6 +48,30 @@ $app->config("debug", true);
 
 //
 require_once("functions.php");
+
+
+/*
+*********************************************
+*********************************************
+>>>FORMATACAO DE ROTAS (PADRAO CakePHP)
+
+Formatar URLs na Seguinte Forma:
+
+/controlador/ação/param1/param2
+
+Onde Ação é a Função a Ser Chamada Dentro do Controlador.
+
+Exemplo Pratico:
+
+www.ourstore.com/books/list/fantasy
+
+No Formato de URL Clássico Antigo, Seria:
+
+www.ourstore.com/books_controller.php?action=list&category=fantasy
+*********************************************
+*********************************************
+*/
+
 
 //ROTAS
 /*

@@ -4,16 +4,17 @@ namespace Vendor\DB;
 
 class Sql {
 	const HOSTNAME = "127.0.0.1";
+	const DBNAME = "projeto_teste_002";
+	const CHARSET = "utf8mb4";//utf8 - utf8mb4
 	const USERNAME = "root";
 	const PASSWORD = "";
-	const DBNAME = "projeto_teste_002";
 
 	private $conn;
 
 	public function __construct()
 	{
 		$this->conn = new \PDO(
-			"mysql:dbname=" . Sql::DBNAME . ";host=" . Sql::HOSTNAME, 
+			"mysql:host=" . Sql::HOSTNAME . ";dbname=" . Sql::DBNAME . ";charset=" . Sql::CHARSET, 
 			Sql::USERNAME, 
 			Sql::PASSWORD
 		);
