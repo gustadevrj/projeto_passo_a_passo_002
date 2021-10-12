@@ -3,7 +3,7 @@
 <b>ROTA CLASSE CATEGORIA - CRUD - LISTAGEM</b><br><br>
 
 <div>
-<a href="/rota_classe_categoria_inserir"><b>INCLUIR NOVA CATEGORIA</b></a>
+<a href="/categoria/inserir"><b>INCLUIR NOVA CATEGORIA</b></a>
 </div>
 
 <br>
@@ -21,9 +21,9 @@
 {/if}
 
 <div>
-	<form action="/rota_classe_categoria_listagem" method="post">
+	<form action="/categoria/listagem" method="post">
 		<input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar..." value="{$pesquisa}">
-		<button type="submit">Pesquisar</button>{if="$pesquisa != ''"}&nbsp;<button type="button" onclick="window.location='/rota_classe_categoria_listagem';">Voltar</button>{/if}
+		<button type="submit">Pesquisar</button>{if="$pesquisa != ''"}&nbsp;<button type="button" onclick="window.location='/categoria/listagem';">Voltar</button>{/if}
 	</form>
 </div>
 
@@ -44,9 +44,9 @@
 			<td align="center">{$value.id_categoria}</td>
 			<td align="left">{$value.categoria}</td>
 			<td align="left">{$value.descricao}</td>
-			<td align="center"><a href="/rota_classe_categoria_detalhe/{$value.id_categoria}">DETALHE</a></td>
-			<td align="center"><a href="/rota_classe_categoria_alterar/{$value.id_categoria}">ALTERAR</a></td>
-			<td align="center"><a href="/rota_classe_categoria_excluir/{$value.id_categoria}" onclick="return confirm('Deseja realmente excluir este registro?')" >EXCLUIR</a></td>
+			<td align="center"><a href="/categoria/detalhe/{$value.id_categoria}">DETALHE</a></td>
+			<td align="center"><a href="/categoria/alterar/{$value.id_categoria}">ALTERAR</a></td>
+			<td align="center"><a href="/categoria/excluir/{$value.id_categoria}" onclick="return confirm('Deseja realmente excluir este registro?')" >EXCLUIR</a></td>
 		</tr>
 	{/loop}
 

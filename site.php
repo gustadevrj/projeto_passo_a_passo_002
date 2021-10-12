@@ -198,7 +198,7 @@ www.ourstore.com/books_controller.php?action=list&category=fantasy
 
 
 //ROTA CLASSE CATEGORIA CRUD - LISTAGEM - GET
-$app->get("/rota_classe_categoria_listagem", function(){
+$app->get("/categoria/listagem", function(){
 	echo("<br><b>>>>ROTA CLASSE CATEGORIA - CRUD - LISTAGEM</b><br><hr>");
 
 	//
@@ -206,7 +206,7 @@ $app->get("/rota_classe_categoria_listagem", function(){
 
 	$page = new Page();
 
-	$page->setTpl("rota_classe_categoria_listagem", array(
+	$page->setTpl("categoria_listagem", array(
 		"pesquisa"=>"", 
 		"categorias"=>$categorias, 
 		"msg_erro"=>Categoria::getMsgErro(), 
@@ -217,7 +217,7 @@ $app->get("/rota_classe_categoria_listagem", function(){
 });
 
 //ROTA CLASSE CATEGORIA CRUD - LISTAGEM - PESQUISA - POST
-$app->post("/rota_classe_categoria_listagem", function(){
+$app->post("/categoria/listagem", function(){
 	echo("<br><b>>>>ROTA CLASSE CATEGORIA - CRUD - LISTAGEM - PESQUISA</b><br><hr>");
 
 	//
@@ -231,7 +231,7 @@ $app->post("/rota_classe_categoria_listagem", function(){
 		"footer"=>false
 	]);
 
-	$page->setTpl("rota_classe_categoria_listagem", array(
+	$page->setTpl("categoria_listagem", array(
 		"pesquisa"=>$pesquisa, 
 		"categorias"=>$categorias, 
 		"msg_erro"=>Categoria::getMsgErro(), 
@@ -242,7 +242,7 @@ $app->post("/rota_classe_categoria_listagem", function(){
 });
 
 //ROTA CLASSE CATEGORIA CRUD - INSERIR - GET
-$app->get("/rota_classe_categoria_inserir", function(){
+$app->get("/categoria/inserir", function(){
 	echo("<br><b>>>>ROTA CLASSE CATEGORIA - CRUD - INSERIR</b><br><hr>");
 
 	//
@@ -265,7 +265,7 @@ $app->get("/rota_classe_categoria_inserir", function(){
 		"footer"=>false
 	]);
 
-	$page->setTpl("rota_classe_categoria_inserir", array(
+	$page->setTpl("categoria_inserir", array(
 		"msg_erro"=>Categoria::getMsgErro(), 
 		"msg_sucesso"=>Categoria::getMsgSucesso(), 
 		"categoria"=>$categoria, 
@@ -276,7 +276,7 @@ $app->get("/rota_classe_categoria_inserir", function(){
 });
 
 //ROTA CLASSE CATEGORIA CRUD - INSERIR - POST
-$app->post("/rota_classe_categoria_inserir", function(){
+$app->post("/categoria/inserir", function(){
 	echo("<br><b>>>>ROTA CLASSE CATEGORIA - CRUD - INSERIR</b><br><hr>");
 
 	//
@@ -290,20 +290,20 @@ $app->post("/rota_classe_categoria_inserir", function(){
 	$categoria->inserir();
 
 	if(($_SESSION["categoria"] == NULL) || ($_SESSION["descricao"] == NULL)){
-		header("Location: /rota_classe_categoria_inserir");
+		header("Location: /categoria/inserir");
 		exit;
 	}
 	else{
 		$_SESSION["categoria"] = NULL;
 		$_SESSION["descricao"] = NULL;
 
-		header("Location: /rota_classe_categoria_listagem");
+		header("Location: /categoria/listagem");
 		exit;
 	}
 });
 
 //ROTA CLASSE CATEGORIA CRUD - ALTERAR - GET
-$app->get("/rota_classe_categoria_alterar/:id_categoria", function($id_categoria){
+$app->get("/categoria/alterar/:id_categoria", function($id_categoria){
 	echo("<br><b>>>>ROTA CLASSE CATEGORIA - CRUD - ALTERAR</b><br><hr>");
 
 	//
@@ -328,7 +328,7 @@ $app->get("/rota_classe_categoria_alterar/:id_categoria", function($id_categoria
 		"footer"=>false
 	]);
 
-	$page->setTpl("rota_classe_categoria_alterar", array( 
+	$page->setTpl("categoria_alterar", array( 
 		"categoria"=>$categoria->getValues(), 
 		"msg_erro"=>Categoria::getMsgErro(), 
 		"msg_sucesso"=>Categoria::getMsgSucesso() 
@@ -338,7 +338,7 @@ $app->get("/rota_classe_categoria_alterar/:id_categoria", function($id_categoria
 });
 
 //ROTA CLASSE CATEGORIA CRUD - ALTERAR - POST
-$app->post("/rota_classe_categoria_alterar/:id_categoria", function($id_categoria){
+$app->post("/categoria/alterar/:id_categoria", function($id_categoria){
 	echo("<br><b>>>>ROTA CLASSE CATEGORIA - CRUD - ALTERAR</b><br><hr>");
 
 	//
@@ -349,36 +349,36 @@ $app->post("/rota_classe_categoria_alterar/:id_categoria", function($id_categori
 	$categoria->alterar();
 
 	if(($_SESSION["categoria"] == NULL) || ($_SESSION["descricao"] == NULL)){
-		header("Location: /rota_classe_categoria_alterar/$id_categoria");
+		header("Location: /categoria/alterar/$id_categoria");
 		exit;
 	}
 	else{
 		$_SESSION["categoria"] = NULL;
 		$_SESSION["descricao"] = NULL;
 
-		header("Location: /rota_classe_categoria_listagem");
+		header("Location: /categoria/listagem");
 		exit;
 	}
 
-	header("Location: /rota_classe_categoria_listagem");
+	header("Location: /categoria/listagem");
 
 	exit;
 });
 
 //ROTA CLASSE CATEGORIA CRUD - EXCLUIR - GET
-$app->get("/rota_classe_categoria_excluir/:id_categoria", function($id_categoria){
+$app->get("/categoria/excluir/:id_categoria", function($id_categoria){
 	echo("<br><b>>>>ROTA CLASSE CATEGORIA - CRUD - EXCLUIR</b><br><hr>");
 
 	//
 	$categoria = Categoria::excluir((int)$id_categoria);
 
-	header("Location: /rota_classe_categoria_listagem");
+	header("Location: /categoria/listagem");
 
 	exit;
 });
 
 //ROTA CLASSE CATEGORIA CRUD - DETALHE - GET
-$app->get("/rota_classe_categoria_detalhe/:id_categoria", function($id_categoria){
+$app->get("/categoria/detalhe/:id_categoria", function($id_categoria){
 	echo("<br><b>>>>ROTA CLASSE CATEGORIA - CRUD - DETALHE</b><br><hr>");
 
 	//
@@ -389,7 +389,7 @@ $app->get("/rota_classe_categoria_detalhe/:id_categoria", function($id_categoria
 		"footer"=>false
 	]);
 
-	$page->setTpl("rota_classe_categoria_detalhe", array(
+	$page->setTpl("categoria_detalhe", array(
 		"categoria"=>$categoria->getValues(), 
 		"pesquisa"=>"", 
 		"msg_erro"=>Categoria::getMsgErro(), 
@@ -431,7 +431,7 @@ www.ourstore.com/books_controller.php?action=list&category=fantasy
 
 
 //ROTA CLASSE PRODUTO CRUD - LISTAGEM - GET
-$app->get("/rota_classe_produto_listagem", function(){
+$app->get("/produto/listagem", function(){
 	echo("<br><b>>>>ROTA CLASSE PRODUTO - CRUD - LISTAGEM</b><br><hr>");
 
 	//

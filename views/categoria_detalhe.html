@@ -3,7 +3,7 @@
 <b>ROTA CLASSE CATEGORIA - CRUD - DETALHE</b><br><br>
 
 <div>
-<a href="/rota_classe_categoria_inserir"><b>INCLUIR NOVA CATEGORIA</b></a>
+<a href="/categoria/inserir"><b>INCLUIR NOVA CATEGORIA</b></a>
 </div>
 
 <br>
@@ -21,7 +21,7 @@
 {/if}
 
 <div>
-	<form action="/rota_classe_categoria_listagem" method="post">
+	<form action="/categoria/listagem" method="post">
 		<input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar Por Categoria" value="{$pesquisa}">
 		<button type="submit">Pesquisar</button>
 	</form>
@@ -38,6 +38,6 @@
 </div>
 
 
-<button type="button" onclick="window.location='/rota_classe_categoria_listagem';">Voltar</button>
+<button type="button" onclick="window.location='/categoria/listagem';">Voltar</button>
 
 </table>
