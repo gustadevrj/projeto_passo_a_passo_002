@@ -19,6 +19,8 @@ echo("<br><b><a href='http://www.projeto_teste_002.com.br'>www.projeto_teste_002
 
 echo("<br><b><a href='http://localhost/phpmyadmin/index.php' target='_blank'>PHP MyAdmin</a></b><br>");
 
+echo("<br><b><a href='/___teste_sessions___.php' target='_blank'>SESSIONS</a></b><br>");
+
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 //DOCUMENT_ROOT
 //$_SERVER["DOCUMENT_ROOT"] = "C:\\xampp\\htdocs\\UDEMY\\projeto_teste_002";

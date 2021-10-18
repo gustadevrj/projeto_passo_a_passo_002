@@ -216,15 +216,21 @@ $app->get("/categoria/listagem", function(){
 	exit;
 });
 
-//ROTA CLASSE CATEGORIA CRUD - LISTAGEM - PESQUISA - POST
-$app->post("/categoria/listagem", function(){
-	echo("<br><b>>>>ROTA CLASSE CATEGORIA - CRUD - LISTAGEM - PESQUISA</b><br><hr>");
+//ROTA CLASSE CATEGORIA CRUD - PESQUISA - POST
+$app->post("/categoria/pesquisa", function(){
+	echo("<br><b>>>>ROTA CLASSE CATEGORIA - CRUD - PESQUISA</b><br><hr>");
 
 	//
 	$pesquisa = (isset($_POST["pesquisa"])) ? $_POST["pesquisa"] : "";
 
 	//
 	$categorias = Categoria::pesquisar((string)$pesquisa);
+
+	//PARAMETRO DE PESQUISA VEIO VAZIO
+	if ($pesquisa == NULL){
+		header("Location: /categoria/listagem");
+		exit;
+	}
 
 	$page = new Page([
 		"header"=>false, 
@@ -249,7 +255,7 @@ $app->get("/categoria/inserir", function(){
 	$categoria = "";
 	$descricao = "";
 
-	//
+	//VALIDA DADOS DO FORMULARIO/SESSIONS
 	if(isset($_SESSION["categoria"]) && isset($_SESSION["descricao"])){
 		if((($_SESSION["categoria"] != "") || ($_SESSION["categoria"] != NULL)) || (($_SESSION["descricao"] != "") || ($_SESSION["descricao"] != NULL))){
 			$categoria = $_SESSION["categoria"];
@@ -310,6 +316,7 @@ $app->get("/categoria/alterar/:id_categoria", function($id_categoria){
 	$categoria = "";
 	$descricao = "";
 
+	//VALIDA DADOS DO FORMULARIO/SESSIONS
 	if(isset($_SESSION["categoria"]) && isset($_SESSION["descricao"])){
 		if((($_SESSION["categoria"] != "") || ($_SESSION["categoria"] != NULL)) || (($_SESSION["descricao"] != "") || ($_SESSION["descricao"] != NULL))){
 			$categoria = $_SESSION["categoria"];
@@ -438,7 +445,7 @@ $app->get("/produto/listagem", function(){
 	//echo("<br><font color='RED'><b>(A FAZER ! ! !)</b></font><br>");
 
 	//
-	$msg_erro = "(A FAZER ! ! !)";
+	$msg_erro = "ROTA CLASSE PRODUTO - CRUD - (A FAZER ! ! !)";
 
 	$page = new Page();
 

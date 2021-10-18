@@ -2,6 +2,7 @@
 <b>TEMPLATE HTML</b>
 <br><br>
 
+{if="$conteudo != ''"}
 	{loop="$conteudo"}
 
 		{if="$value == 'Gustavo'"}
@@ -11,6 +12,7 @@
 		{/if}
 
 	{/loop}
+{/if}
 
 {if="$texto != ''"}
 	<br>

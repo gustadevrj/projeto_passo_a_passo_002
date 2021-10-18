@@ -12,6 +12,7 @@ class Categoria extends Model{
 	const ERRO = "Categoria_ERRO";
 	const SUCESSO = "Categoria_SUCESSO";
 
+	//LISTA TODOS OS REGISTROS
 	public static function listAll(){
 		$sql = new Sql();
 
@@ -34,6 +35,7 @@ class Categoria extends Model{
 		}
 	}
 
+	//LISTA TODOS OS REGISTRO QUE ATENDEM O PARAMETRO DE PESQUISA
 	public static function pesquisar(string $categoria){
 		$sql = new Sql();
 
@@ -57,24 +59,12 @@ class Categoria extends Model{
 			));
 		}
 		else{
-			$rows = $sql->select("
-					SELECT 
-					c.id_categoria, 
-					c.categoria, 
-					c.descricao 
-					FROM 
-					tb_categorias c 
-					WHERE 
-					(
-					c.categoria LIKE :categoria 
-					OR c.descricao LIKE :categoria
-					);
-				", array(
-					":categoria" => "%" . $categoria . "%" 
-			));
+			//PARAMETRO DE PESQUISA VEIO VAZIO
+			$rows = Categoria::listAll();
 		}
 
-		if(count($rows) > 0){
+		if(($rows != NULL) && (count($rows) > 0)){
+		//if(count($rows) > 0){
 			if ($categoria != ""){
 				Categoria::setMsgSucesso("Pesquisa Por: " . $categoria);
 			}
@@ -86,8 +76,10 @@ class Categoria extends Model{
 
 			return NULL;
 		}
+
 	}
 
+	//BUSCA CATEGORIA POR ID
 	public static function pegaCategoriaPorID(int $id_categoria){
 		$sql = new Sql();
 
@@ -119,10 +111,13 @@ class Categoria extends Model{
 		}
 	}
 
+	//VERIFICA SE CATEGORIA JA EXISTE
 	public static function verificaSeExiste(string $categoria, int $id_categoria = NULL):int{
 		$sql = new Sql();
 
+		//
 		if($id_categoria == NULL){
+			//INSERT
 			$resultado = $sql->select("
 				SELECT 
 				c.id_categoria 
@@ -135,6 +130,7 @@ class Categoria extends Model{
 			));
 		}
 		else{
+			//UPDATE
 			$resultado = $sql->select("
 				SELECT 
 				c.id_categoria 
@@ -159,12 +155,13 @@ class Categoria extends Model{
 		return $resultado;
 	}
 
+	//CATEGORIA - INSERT
 	public function inserir(){
 		//
 		$_SESSION["categoria"] = ($this->getcategoria() == NULL) ? NULL : $this->getcategoria();
 		$_SESSION["descricao"] = ($this->getdescricao() == NULL) ? NULL : $this->getdescricao();
 
-		//
+		//VALIDA DADOS DO FORMULARIO/ATRIBUTOS DA CLASSE
 		if(($this->getcategoria() == NULL) || ($this->getcategoria() == "") || ($this->getdescricao() == NULL) || ($this->getdescricao() == "")){
 			$_SESSION["categoria"] = $this->getcategoria();
 			$_SESSION["descricao"] = $this->getdescricao();
@@ -176,6 +173,7 @@ class Categoria extends Model{
 			exit;
 		}
 
+		//VERIFICA SE JA EXISTE
 		$resultado = Categoria::verificaSeExiste((string)$this->getcategoria());
 
 		if($resultado != 0){
@@ -206,12 +204,13 @@ class Categoria extends Model{
 		Categoria::setMsgSucesso("Categoria Criada com Sucesso!");
 	}
 
+	//CATEGORIA - UPDATE
 	public function alterar(){
 		//
 		$_SESSION["categoria"] = ($this->getcategoria() == NULL) ? NULL : $this->getcategoria();
 		$_SESSION["descricao"] = ($this->getdescricao() == NULL) ? NULL : $this->getdescricao();
 
-		//
+		//VALIDA DADOS DO FORMULARIO/ATRIBUTOS DA CLASSE
 		if(($this->getcategoria() == NULL) || ($this->getcategoria() == "") || ($this->getdescricao() == NULL) || ($this->getdescricao() == "")){
 			//$_SESSION["categoria"] = $this->getcategoria();
 			//$_SESSION["descricao"] = $this->getdescricao();
@@ -223,6 +222,7 @@ class Categoria extends Model{
 			exit;
 		}
 
+		//VERIFICA SE JA EXISTE
 		$resultado = Categoria::verificaSeExiste((string)$this->getcategoria(), (int)$this->getid_categoria());
 
 		if($resultado != 0){

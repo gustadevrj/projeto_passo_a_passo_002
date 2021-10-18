@@ -1,6 +1,7 @@
 
-
+<!--
 <b>ROTA CLASSE CATEGORIA - CRUD - DETALHE</b><br><br>
+-->
 
 <div>
 <a href="/categoria/inserir"><b>INCLUIR NOVA CATEGORIA</b></a>
@@ -21,7 +22,7 @@
 {/if}
 
 <div>
-	<form action="/categoria/listagem" method="post">
+	<form action="/categoria/pesquisa" method="post">
 		<input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar Por Categoria" value="{$pesquisa}">
 		<button type="submit">Pesquisar</button>
 	</form>

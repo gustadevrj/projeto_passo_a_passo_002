@@ -1,6 +1,7 @@
 
-
+<!--
 <b>ROTA CLASSE CATEGORIA - CRUD - LISTAGEM</b><br><br>
+-->
 
 <div>
 <a href="/categoria/inserir"><b>INCLUIR NOVA CATEGORIA</b></a>
@@ -21,13 +22,13 @@
 {/if}
 
 <div>
-	<form action="/categoria/listagem" method="post">
+	<form action="/categoria/pesquisa" method="post">
 		<input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar..." value="{$pesquisa}">
 		<button type="submit">Pesquisar</button>{if="$pesquisa != ''"}&nbsp;<button type="button" onclick="window.location='/categoria/listagem';">Voltar</button>{/if}
 	</form>
 </div>
 
-<br>
+
 
 {if="$categorias != NULL"}
 
